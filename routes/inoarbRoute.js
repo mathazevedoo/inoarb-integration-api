@@ -1,7 +1,11 @@
 const {getFullOutput, getEventByDocumentNumber, saveNewEvent} = require('../bussiness/inoarbBussiness')
+const bodyParser = require('body-parser')
 
 module.exports = (router, express) => {
 
+    
+    router.use(bodyParser.json({limit: '15mb'}))
+    router.use(bodyParser.urlencoded({limit: '15mb', extended: true}))
     router.use(express.json())
     router.use(express.urlencoded({ extended: true }))
 
