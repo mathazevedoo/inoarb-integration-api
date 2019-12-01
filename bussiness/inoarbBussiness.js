@@ -7,6 +7,11 @@ const getEventByDocumentNumber = async (documentNumber) => await executeQuery(`
     WHERE CPF like ?
     `, [documentNumber], (_, success) => success)
 
+const getImageClobByIdOcurrence = async (id) => await executeQuery(`
+    SELECT IMAGE_DADO FROM TASKS_OCORRENCIA WHERE ID = ? 
+    AND IMAGE_DADO IS NOT NULL
+    `, [id], (_, success) => success)
+
 const saveNewEvent = async (payload) => await executeQuery(`
     INSERT INTO TASKS_OCORRENCIA(
         nome, 
@@ -48,5 +53,6 @@ const saveNewEvent = async (payload) => await executeQuery(`
 module.exports = {
     getFullOutput,
     getEventByDocumentNumber,
-    saveNewEvent
+    saveNewEvent,
+    getImageClobByIdOcurrence
 }
