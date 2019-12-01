@@ -18,7 +18,6 @@ const saveNewEvent = async (payload) => await executeQuery(`
         data_ocorrencia, 
         tipo_ocorrencia,
         update_at,
-        image,
         image_dado
     )
     VALUES(
@@ -29,7 +28,6 @@ const saveNewEvent = async (payload) => await executeQuery(`
         ?, 
         ?, 
         ?, 
-        ?,
         ?,
         ?,
         ?
@@ -44,7 +42,6 @@ const saveNewEvent = async (payload) => await executeQuery(`
         payload.eventDate,
         payload.eventType,
         payload.updateDate,
-        payload.imagePath,
         payload.imageClob
     ], (_, success) => success)
 
